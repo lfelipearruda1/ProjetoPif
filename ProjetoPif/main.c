@@ -125,8 +125,9 @@ int baternocorpo(struct noparacobra *head, int x, int y) {
 }
 
 void randonmaca(int *x, int *y) {
-  *x = rand() % (MAXX - MINX) + MINX - 1;
-  *y = rand() % (MAXY - MINY) + MINY - 1;
+  // Gera posições evitando as bordas
+  *x = rand() % (MAXX - MINX - 2) + MINX + 1;
+  *y = rand() % (MAXY - MINY - 2) + MINY + 1;
 }
 
 void rankingemordem(struct ranking **head, int score) {
@@ -206,7 +207,7 @@ void jogoLoop(struct noparacobra *head, int *dirX, int *dirY, int *placar, int *
     if (timerTimeOver() == 1) {
       int newX = head->Xno + *dirX;
       int newY = head->Yno + *dirY;
-      if (newX >= (MAXX) || newX <= MINX || newY >= MAXY || newY <= MINY) {
+      if (newX >= (MAXX - 1) || newX <= MINX || newY >= (MAXY - 1) || newY <= MINY) {
         break;
       }
       if (baternocorpo(head, newX, newY) == 1) {
@@ -242,7 +243,8 @@ int main() {
 
   addcobra(&head, 25, 7);
   srand((unsigned int)time(NULL));
-  int PosMacaX = rand() % (MAXX - MINX) + MINX, PosMacaY = rand() % (MAXY - MINY) + MINY;
+  int PosMacaX, PosMacaY;
+  randonmaca(&PosMacaX, &PosMacaY);
   printmaca(PosMacaX, PosMacaY);
   screenUpdate();
 
@@ -257,9 +259,7 @@ int main() {
     fclose(in);
   }
 
-  time_t tempoinicial, tempovivo;
-  int tempo = 0;
-  tempoinicial = time(NULL);
+  time_t tempoinicial = time(NULL);
   jogoLoop(head, &dirX, &dirY, &placar, &recorde, tempoinicial, PosMacaX, PosMacaY);
   freecobra(&head);
   keyboardDestroy();
