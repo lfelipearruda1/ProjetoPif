@@ -5,16 +5,11 @@
  * Based on "From C to C++ course - 2002"
  */
 
-#ifdef __unix__
 #include <termios.h>
 #include <unistd.h>
-#elif defined(_WIN32) || defined(WIN32)
-#include <conio.h>
-#endif
 
 #include "keyboard.h"
 
-#ifdef __unix__
 static struct termios initialSettings, newSettings;
 static int peekCharacter;
 
@@ -29,9 +24,7 @@ void keyboardInit() {
   tcsetattr(0, TCSANOW, &newSettings);
 }
 
-void keyboardDestroy() {
-  tcsetattr(0, TCSANOW, &initialSettings);
-}
+void keyboardDestroy() { tcsetattr(0, TCSANOW, &initialSettings); }
 
 int keyhit() {
   unsigned char ch;
@@ -65,6 +58,3 @@ int readch() {
   read(0, &ch, 1);
   return ch;
 }
-#else
-// Implementações alternativas para Windows podem ser colocadas aqui
-#endif
