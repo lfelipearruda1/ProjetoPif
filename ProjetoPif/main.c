@@ -67,7 +67,7 @@ void printcobra(struct noparacobra *head) {
   while (temp2 != NULL) {
     screenSetColor(GREEN, DARKGRAY);
     screenGotoxy(temp2->Xno, temp2->Yno);
-    printf("I");
+    printf("0");
     temp2 = temp2->next;
   }
 }
@@ -110,7 +110,7 @@ void cobrandando(struct noparacobra **head, int x, int y) {
 void printmaca(int x, int y) {
   screenSetColor(RED, DARKGRAY);
   screenGotoxy(x, y);
-  printf("O");
+  printf("*");
 }
 
 int baternocorpo(struct noparacobra *head, int x, int y) {
@@ -228,7 +228,7 @@ void jogoLoop(struct noparacobra *head, int *dirX, int *dirY, int *placar, int *
 }
 
 int main() {
-  printf("          🐍🍎 SNAKE GAME 🍎🐍\n\n\n              Carregando...\n");
+  printf("          JOGO DA COBRINHA   \n\n\n              Carregando...\n");
   sleep(3);
   struct noparacobra *head = NULL;
   static int ch = 0;
