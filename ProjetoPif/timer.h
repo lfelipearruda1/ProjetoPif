@@ -1,1 +1,16 @@
-c:\Users\felip\Desktop\Jogo Cobrinha\Trabalho_pif2.0\.gitignore c:\Users\felip\Desktop\Jogo Cobrinha\Trabalho_pif2.0\comentado.txt c:\Users\felip\Desktop\Jogo Cobrinha\Trabalho_pif2.0\keyboard.c c:\Users\felip\Desktop\Jogo Cobrinha\Trabalho_pif2.0\keyboard.h c:\Users\felip\Desktop\Jogo Cobrinha\Trabalho_pif2.0\main.c c:\Users\felip\Desktop\Jogo Cobrinha\Trabalho_pif2.0\rankfile.txt c:\Users\felip\Desktop\Jogo Cobrinha\Trabalho_pif2.0\README.md c:\Users\felip\Desktop\Jogo Cobrinha\Trabalho_pif2.0\screen.c c:\Users\felip\Desktop\Jogo Cobrinha\Trabalho_pif2.0\screen.h c:\Users\felip\Desktop\Jogo Cobrinha\Trabalho_pif2.0\timer.c c:\Users\felip\Desktop\Jogo Cobrinha\Trabalho_pif2.0\timer.h
+/**
+ * timer.h
+ * Created on Aug, 23th 2023
+ * Author: Tiago Barros
+ * Based on "From C to C++ course - 2002"
+*/
+
+void timerInit(int valueMilliSec);
+
+void timerDestroy();
+
+void timerUpdateTimer(int valueMilliSec);
+
+int timerTimeOver();
+
+void timerPrint();
