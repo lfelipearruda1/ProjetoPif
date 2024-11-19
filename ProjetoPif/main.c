@@ -232,53 +232,49 @@ int main() {
   printf("          JOGO DA COBRINHA   \n\n\n              Carregando...\n");
   sleep(3);
   struct noparacobra *head = NULL;
-  static int ch = 0;
   int placar = 0;
   int dirX = 1, dirY = 0;
-  FILE *in;
+  int recorde = 0;
 
   screenInit(1);
   keyboardInit();
   timerInit(80);
 
   addcobra(&head, 25, 7);
+
   srand((unsigned int)time(NULL));
   int PosMacaX, PosMacaY;
   randonmaca(&PosMacaX, &PosMacaY);
   printmaca(PosMacaX, PosMacaY);
   screenUpdate();
 
-  int recorde = 0;
-  in = fopen("rankfile.txt", "r");
+  FILE *in = fopen("rankfile.txt", "r");
   if (in != NULL) {
-    while (fread(&placar, sizeof(int), 1, in) == 1) {
-      if (placar > recorde) {
-        recorde = placar;
-      }
-    }
+    fread(&recorde, sizeof(int), 1, in); 
     fclose(in);
   }
 
   time_t tempoinicial = time(NULL);
   jogoLoop(head, &dirX, &dirY, &placar, &recorde, tempoinicial, PosMacaX, PosMacaY);
+
+  if (placar > recorde) {
+    recorde = placar;
+  }
+
+  in = fopen("rankfile.txt", "w"); 
+  if (in != NULL) {
+    fwrite(&recorde, sizeof(int), 1, in);
+    fclose(in);
+  }
+
   freecobra(&head);
   keyboardDestroy();
   screenDestroy();
-  in = fopen("rankfile.txt", "a");
-  fwrite(&placar, sizeof(int), 1, in);
-  fclose(in);
-  struct ranking *lista = NULL;
-  in = fopen("rankfile.txt", "r");
-  while (fread(&placar, sizeof(int), 1, in) == 1) {
-    rankingemordem(&lista, placar);
-  }
-  fclose(in);
-  in = fopen("rankfile.txt", "w");
-  addnoranking(lista, in);
-  fclose(in);
-  printranking(lista);
-  freeranking(&lista);
   timerDestroy();
+
+  printf("\n\nPlacar final: %d\n", placar);
+  printf("Recorde atual: %d\n", recorde);
 
   return 0;
 }
+
