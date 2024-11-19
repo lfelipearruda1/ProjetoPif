@@ -35,11 +35,12 @@ void printembaixo(int placar, int recorde, int tempo) {
   screenGotoxy(offsetX, offsetY);
   printf("| Placar : %d", placar);
 
+  screenGotoxy(offsetX, offsetY + 2);
+  printf("| Recorde : %d", recorde);
+
   screenGotoxy(offsetX, offsetY + 4);
   printf("| Tempo vivo : %d", tempo);
 
-  screenGotoxy(offsetX, offsetY + 2);
-  printf("| Recorde : %d", recorde);
 }
 
 void addcobra(struct noparacobra **head, int x, int y) {
