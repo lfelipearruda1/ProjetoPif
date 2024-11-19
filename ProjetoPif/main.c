@@ -28,9 +28,9 @@ struct ranking {
 };
 
 void printembaixo(int placar, int recorde, int tempo) {
-  screenSetColor(YELLOW, DARKGRAY);
-  int offsetX = MAXX + 5;
-  int offsetY = MINY + 3;
+  screenSetColor(LIGHTCYAN, DARKGRAY); 
+  int offsetX = MAXX + 5;  
+  int offsetY = MINY + 3; 
 
   screenGotoxy(offsetX, offsetY);
   printf("| Placar : %d", placar);
