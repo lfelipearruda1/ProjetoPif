@@ -19,3 +19,5 @@ A seguir, digite essa linha de código também no seu terminal:
 Após isso você irá conseguir mexer a cobra usando o W, A, S e D, que representam cima, esquerda, baixo e direita, respectivamente.
 
 A cobra é representada pelo caracter "0" da cor verde e a maçã pelo caracter "*" vermelho.
+
+O objetivo do jogo é fazer a cobra comer o máximo de maçãs [  *  ] possível, aumentando sua pontuação e tamanho. O desafio é evitar colisões com as bordas ou com o próprio corpo, mantendo o jogo ativo pelo maior tempo possível.
