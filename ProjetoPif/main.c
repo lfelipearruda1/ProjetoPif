@@ -125,7 +125,6 @@ int baternocorpo(struct noparacobra *head, int x, int y) {
 }
 
 void randonmaca(int *x, int *y) {
-  // Gera posições evitando as bordas
   *x = rand() % (MAXX - MINX - 2) + MINX + 1;
   *y = rand() % (MAXY - MINY - 2) + MINY + 1;
 }
